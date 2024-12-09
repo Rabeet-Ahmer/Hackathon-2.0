@@ -9,6 +9,12 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+		fontFamily:{
+			jakarta: ["var(--font-plus-jakarta-sans)"]
+		},
+		screens: {
+			lap: "1440px", 
+		  },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -49,7 +55,9 @@ const config: Config = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+			b1: "#3563E9",
+			b2: "#54A6FF"
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
