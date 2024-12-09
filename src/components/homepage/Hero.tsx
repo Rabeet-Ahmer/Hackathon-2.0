@@ -2,7 +2,6 @@ import React from "react";
 import Wrapper from "../special/Wrapper";
 import { Button } from "../ui/button";
 import Image from "next/image";
-import { Calendar } from "../ui/calendar";
 import { Separator } from "../ui/separator";
 import Select2 from "../special/Select2";
 
@@ -29,7 +28,7 @@ const Hero = ({hidden}:IHero) => {
   const Select3: TSelect = {
     label: "Date",
     placeholder: "Select your date",
-    item1: <Calendar />,
+    item1: "21 July",
   };
   const Select4: TSelect = {
     label: "Time",

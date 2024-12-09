@@ -1,6 +1,5 @@
 import Select2 from "@/components/special/Select2";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -30,7 +29,7 @@ const page = () => {
   const Select3: TSelect = {
     label: "Date",
     placeholder: "Select your date",
-    item1: <Calendar />,
+    item1: "21 July",
     pay: true,
   };
   const Select4: TSelect = {
