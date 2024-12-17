@@ -129,7 +129,7 @@ const Recomended = ({hidden, scroll}:IHero) => {
 
         {/* Button */}
         <div className={`flex items-center justify-between gap-[49px] lap:justify-self-end lap:gap-[525px] ${scroll && "hidden"} ${hidden && "lap:gap-[300px]"} py-16`}>
-          <Button2 text="Show more car" />
+          <Button2 path="/category" text="Show more car" />
           <p className="font-jakarta text-[#90A3BF] whitespace-nowrap">120 car</p>
         </div>
       </div>

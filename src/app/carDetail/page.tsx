@@ -77,7 +77,6 @@ const CarDetail = () => {
 
       {/* Right side */}
       <div className="lap:col-span-3 flex flex-col lg:gap-8">
-      {/* <div className="flex flex-col items-center gap-8"> */}
       
         <div className="flex flex-col items-center lg:flex-row lg:justify-center gap-8 p-8">
           <div className="font-jakarta space-y-6 flex flex-col items-center">
@@ -173,7 +172,7 @@ const CarDetail = () => {
                   <p className="font-bold text-xl">$80.00/</p>
                   <p className="text-[#90A3BF] text-sm">day</p>
                 </div>
-                <Button2 text="Rent Now" />
+                <Button2 path="/payment" text="Rent Now" />
               </div>
             </div>
           </div>

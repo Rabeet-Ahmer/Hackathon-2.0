@@ -21,7 +21,7 @@ interface ISelect {
 const Select2 = ({ item }: { item: ISelect }) => {
   return (
     <div
-      className={`${item.pay && "space-y-4"} ${
+      className={`${item.pay && "space-y-4 w-full"} ${
         item.dash && "w-full"
       } w-[76px] lap:w-auto`}
     >
@@ -37,13 +37,13 @@ const Select2 = ({ item }: { item: ISelect }) => {
         <SelectTrigger
           className={`${
             item.pay
-              ? "font-medium text-sm text-[#90A3BF] border-none shadow-none py-7 px-8 bg-[#F6F7F9] lap:bg-background"
-              : "bg-background"
+              ? "font-medium text-sm text-[#90A3BF] border-none shadow-none py-7 px-8 bg-[#F6F7F9]"
+              : ""
           } ${
             item.dash
               ? "font-medium text-sm text-[#90A3BF] border-none shadow-none bg-[#F6F7F9] p-7 lg:bg-background lg:p-0 lg:opacity-100"
-              : "p-0"
-          } w-full border-none shadow-none focus:ring-0 text-xs  opacity-60 lap:w-auto`}
+              : ""
+          } w-full border-none shadow-none focus:ring-0 text-xs opacity-60 `}
         >
           <SelectValue placeholder={item.placeholder} />
         </SelectTrigger>

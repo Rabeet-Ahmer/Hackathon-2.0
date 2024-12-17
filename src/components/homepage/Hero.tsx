@@ -80,7 +80,7 @@ const Hero = ({hidden}:IHero) => {
           {/* Pick up / Drop off card */}
           <div className="lg:flex col-span-2 items-center space-y-8 lg:space-y-0 lg:gap-11 relative "> 
 
-            {/* Pick up card */}                                               {/* w-[486px] */}
+            {/* Pick up card */}                                               
            <div className={`bg-white w-[327px] rounded-lg ${hidden ? "lap:w-[486px]":"lap:w-[582px]"}`}>
               <div className="space-y-4 px-4 lap:px-12 py-4">
                 <div className="flex items-center gap-3">
@@ -108,7 +108,7 @@ const Hero = ({hidden}:IHero) => {
             </div>
 
             {/* Switch button */}
-            <Button className={`bg-b1 shadow-xl w-[60px] h-[60px] absolute top-[90px] left-32 lg:relative lg:top-0 lg:left-0 ${hidden && "absolute z-10 lap:absolute lap:z-10 lap:left-[460px] lap:top-8"}`} variant={"destructive"}>
+            <Button className={`bg-b1 shadow-xl w-[60px] h-[60px] absolute top-[90px] left-32 lg:relative lg:top-0 lg:left-0 ${hidden && "absolute z-10 lap:absolute lap:z-10 lap:left-[475px] lap:top-8"}`} variant={"destructive"}>
               <Image
                 src={"icons/switch.svg"}
                 alt="icon"
@@ -117,7 +117,7 @@ const Hero = ({hidden}:IHero) => {
               />
             </Button>
 
-            {/* Drop off card */}                                               {/* w-[486px] */}
+            {/* Drop off card */}                                              
             <div className={`bg-white w-[327px] rounded-lg ${hidden ? "lap:w-[486px]":"lap:w-[582px]"}`}>
               <div className="space-y-4 px-4 lap:px-12 py-4">
                 <div className="flex items-center gap-3">

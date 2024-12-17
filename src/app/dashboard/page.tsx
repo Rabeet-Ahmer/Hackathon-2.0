@@ -161,7 +161,7 @@ const page = () => {
 
         {/* Card 1 */}
         <div className="bg-white lap:w-[534px] rounded-lg p-4 lap:p-6 space-y-4">
-          <h3 className="font-bold text-base lap:text-xl">Details Rental</h3>
+          <h3 className="font-bold text-base lg:text-xl">Details Rental</h3>
           <Image
             src={"cars/location.svg"}
             alt="location"
@@ -180,10 +180,10 @@ const page = () => {
             />
             <div className="flex items-end lap:items-center justify-between w-full ">
               <div>
-                <h2 className="font-bold text-lg lap:text-2xl">Nissan GT-R</h2>
-                <p className="font-medium text-xs lap:text-sm text-[#3D5278]">Sport Car</p>
+                <h2 className="font-bold text-lg lg:text-2xl">Nissan GT-R</h2>
+                <p className="font-medium text-xs lg:text-sm text-[#3D5278]">Sport Car</p>
               </div>
-              <p className="font-medium text-xs lap:text-sm text-[#3D5278] text-start">
+              <p className="font-medium text-xs lg:text-sm text-[#3D5278] text-start">
                 #9761
               </p>
             </div>
@@ -240,15 +240,15 @@ const page = () => {
 
           <div className="flex justify-between items-center">
             <div>
-              <h3 className="font-bold text-base lap:text-xl">Total Rental Price</h3>
-              <p className="hidden lap:block font-medium text-xs lap:text-sm text-[#90A3BF]">
+              <h3 className="font-bold text-base lg:text-xl">Total Rental Price</h3>
+              <p className="hidden lap:block font-medium text-xs lg:text-sm text-[#90A3BF]">
                 Overall price and includes rental discount
               </p>
-              <p className="lap:hidden font-medium text-xs lap:text-sm text-[#90A3BF]">
+              <p className="lap:hidden font-medium text-xs lg:text-sm text-[#90A3BF]">
                 Overall price rental
               </p>
             </div>
-            <h2 className="font-bold text-xl lap:text-[32px]">$80.00</h2>
+            <h2 className="font-bold text-xl lg:text-[32px]">$80.00</h2>
           </div>
         </div>
 
@@ -257,7 +257,7 @@ const page = () => {
           {/* Card 2 */}
           <div className="bg-white p-4 lap:p-6 space-y-8 lap:w-[524px] lap:h-[324px] rounded-lg">
             <div className="flex items-center justify-between">
-              <h3 className="font-bold text-base lap:text-xl">Top 5 Car Rental </h3>
+              <h3 className="font-bold text-base lg:text-xl">Top 5 Car Rental </h3>
               <Button variant={"ghost"}>
                 <Image
                   src={"icons/dots.svg"}
@@ -333,7 +333,7 @@ const page = () => {
           {/* Card 3 */}
           <div className="bg-white p-4 lap:p-6 space-y-8 rounded-lg">
             <div className="flex items-center justify-between">
-              <h3 className="font-bold text-base lap:text-xl">Recent Transaction</h3>
+              <h3 className="font-bold text-base lg:text-xl">Recent Transaction</h3>
               <Link href={"#"} className="font-medium text-xs text-b1">
                 View All
               </Link>
@@ -343,7 +343,7 @@ const page = () => {
                 <Image src={"cars/ad2.svg"} alt="car" width={114} height={36} className="object-cover"/>
                 <div className="flex justify-between w-full">
                   <div className="space-y-2">
-                    <p className="font-bold text-sm lap:text-base">Nissan GT - R</p>
+                    <p className="font-bold text-sm lg:text-base">Nissan GT - R</p>
                     <p className="font-medium text-xs text-[#90A3BF]">Sport Car</p>
                   </div>
                   <div className="text-end space-y-2">
@@ -357,7 +357,7 @@ const page = () => {
                 <Image src={"cars/ad1.svg"} alt="car" width={114} height={36} className="object-cover"/>
                 <div className="flex justify-between w-full">
                   <div className="space-y-2">
-                    <p className="font-bold text-sm lap:text-base">Koegnigsegg</p>
+                    <p className="font-bold text-sm lg:text-base">Koegnigsegg</p>
                     <p className="font-medium text-xs text-[#90A3BF]">Sport Car</p>
                   </div>
                   <div className="text-end space-y-2">
@@ -371,7 +371,7 @@ const page = () => {
                 <Image src={"cars/car3.svg"} alt="car" width={114} height={36} className="object-cover"/>
                 <div className="flex justify-between w-full">
                   <div className="space-y-2">
-                    <p className="font-bold text-sm lap:text-base">Rolls - Royce</p>
+                    <p className="font-bold text-sm lg:text-base">Rolls - Royce</p>
                     <p className="font-medium text-xs text-[#90A3BF]">Sport Car</p>
                   </div>
                   <div className="text-end space-y-2">
@@ -385,7 +385,7 @@ const page = () => {
                 <Image src={"cars/car7.svg"} alt="car" width={114} height={36} className="object-cover"/>
                 <div className="flex justify-between w-full">
                   <div className="space-y-2">
-                    <p className="font-bold text-sm lap:text-base">CR - V</p>
+                    <p className="font-bold text-sm lg:text-base">CR - V</p>
                     <p className="font-medium text-xs text-[#90A3BF]">SUV</p>
                   </div>
                   <div className="text-end space-y-2">

@@ -65,7 +65,7 @@ const Card:FC<{item: ICard}> = ({item}) => {
           </div>
 
           {/* Rent Now button */}
-          <Button2 text="Rent Now" />
+          <Button2 path="/carDetail" text="Rent Now" />
         </div>
       </div>
     </div>

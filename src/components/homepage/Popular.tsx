@@ -2,6 +2,7 @@ import React from "react";
 import Wrapper from "../special/Wrapper";
 import Card from "../special/Card";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 interface IHero{
     hidden?: boolean
@@ -36,7 +37,7 @@ const Popular = ({hidden, scroll}:IHero) => {
         {/* Card top */}
         <div className="font-jakarta font-semibold text-base flex justify-between items-center px-5">
           <p className="text-[#90A3BF]">Popular Car</p>
-          <Button variant={"ghost"} className="text-b1">View All</Button>
+          <Link href={"/category"} className="text-b1">View All</Link>
         </div>
 
         {/* Popular cars Card */}                                           
