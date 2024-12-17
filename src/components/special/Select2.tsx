@@ -14,18 +14,37 @@ interface ISelect {
   item1: string | React.ReactNode;
   item2?: string;
   item3?: string;
-  pay?: boolean
+  pay?: boolean;
+  dash?: boolean;
 }
 
 const Select2 = ({ item }: { item: ISelect }) => {
   return (
-    // <div className={`${item.pay && "space-y-4"} w-[76px] lap:w-auto`}>
-    <div className={`${item.pay ? "space-y-4":"w-[76px] lap:w-auto"}`}>
-      <Label htmlFor={`${item.label}`} className={`font-bold text-base ${item.pay && "font-semibold text-base"}`}>
+    <div
+      className={`${item.pay && "space-y-4"} ${
+        item.dash && "w-full"
+      } w-[76px] lap:w-auto`}
+    >
+      <Label
+        htmlFor={`${item.label}`}
+        className={`font-bold text-base ${
+          item.pay && "font-semibold text-base"
+        }`}
+      >
         {item.label}
       </Label>
       <Select>
-        <SelectTrigger className={`${item.pay ? "font-medium text-sm text-[#90A3BF] border-none shadow-none py-7 px-8 bg-[#F6F7F9] ": "w-[126px] border-none shadow-none focus:ring-0 text-xs p-0 opacity-60 sm:w-[76px] lap:w-auto"} `}>
+        <SelectTrigger
+          className={`${
+            item.pay
+              ? "font-medium text-sm text-[#90A3BF] border-none shadow-none py-7 px-8 bg-[#F6F7F9] lap:bg-background"
+              : "bg-background"
+          } ${
+            item.dash
+              ? "font-medium text-sm text-[#90A3BF] border-none shadow-none bg-[#F6F7F9] p-7 lg:bg-background lg:p-0 lg:opacity-100"
+              : "p-0"
+          } w-full border-none shadow-none focus:ring-0 text-xs  opacity-60 lap:w-auto`}
+        >
           <SelectValue placeholder={item.placeholder} />
         </SelectTrigger>
         <SelectContent>

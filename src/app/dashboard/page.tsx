@@ -12,27 +12,31 @@ const page = () => {
     item1: string | React.ReactNode;
     item2?: string;
     item3?: string;
+    dash?: boolean
   };
 
   const Select1: TSelect = {
     label: "Locations",
     placeholder: "Select your city",
     item1: "Kota Semarang",
+    dash: true
   };
   const Select3: TSelect = {
     label: "Date",
     placeholder: "Select your date",
     item1: "21 July 2022",
+    dash: true
   };
   const Select4: TSelect = {
     label: "Time",
     placeholder: "Select your time",
     item1: "01.00",
+    dash: true
   };
 
   return (
     // Main div
-    <main className="font-jakarta flex">
+    <main className="font-jakarta lap:flex lap:justify-normal">
 
       {/* Side bar, only for large screens */}
       <div className="bg-white w-[286px] px-8 py-9 space-y-[60px] hidden lap:block">
@@ -153,31 +157,33 @@ const page = () => {
       </div>
 
       {/* Right side */}
-      <div className="flex gap-8 p-8">
+      <div className="flex gap-8 p-6 lap:p-8 flex-col lap:flex-row">
 
         {/* Card 1 */}
-        <div className="bg-white w-[534px] rounded-lg p-6 space-y-4">
-          <h3 className="font-bold text-xl">Details Rental</h3>
+        <div className="bg-white lap:w-[534px] rounded-lg p-4 lap:p-6 space-y-4">
+          <h3 className="font-bold text-base lap:text-xl">Details Rental</h3>
           <Image
             src={"cars/location.svg"}
             alt="location"
             width={486}
             height={272}
+            className="w-[295px] h-[272px] md:w-auto md:h-auto object-cover rounded-md justify-self-center"
           />
-          <div className="flex gap-4">
+
+          <div className="flex gap-4 items-center">
             <Image
               src={"cars/detail1.svg"}
               alt="car"
               width={132}
               height={72}
-              className="object-cover max-h-[72px] rounded-lg flex-shrink-0"
+              className="object-cover max-h-[72px] w-[116px] lap:w-auto rounded-lg flex-shrink-0"
             />
-            <div className="flex items-center justify-between w-full">
+            <div className="flex items-end lap:items-center justify-between w-full ">
               <div>
-                <h2 className="font-bold text-2xl">Nissan GT - R</h2>
-                <p className="font-medium text-sm text-[#3D5278]">Sport Car</p>
+                <h2 className="font-bold text-lg lap:text-2xl">Nissan GT-R</h2>
+                <p className="font-medium text-xs lap:text-sm text-[#3D5278]">Sport Car</p>
               </div>
-              <p className="font-medium text-sm text-[#3D5278] text-start">
+              <p className="font-medium text-xs lap:text-sm text-[#3D5278] text-start">
                 #9761
               </p>
             </div>
@@ -188,7 +194,7 @@ const page = () => {
               <p className="bg-b1 w-2 h-2 rounded-full outline outline-b2/30"></p>
               <p className="font-semibold">Pick-Up</p>
             </div>
-            <div className={`flex gap-6`}>
+            <div className="flex flex-col lap:flex-row gap-6">
               <div>
                 <Select2 item={Select1} />
               </div>
@@ -212,7 +218,7 @@ const page = () => {
               <p className="bg-b1 w-2 h-2 rounded-full outline outline-b2/30"></p>
               <p className="font-semibold">Drop Off</p>
             </div>
-            <div className={`flex gap-6`}>
+            <div className="flex flex-col lap:flex-row gap-6">
               <div>
                 <Select2 item={Select1} />
               </div>
@@ -231,23 +237,27 @@ const page = () => {
             </div>
           </div>
           <Separator className="my-10" />
+
           <div className="flex justify-between items-center">
             <div>
-              <h3 className="font-bold text-xl">Total Rental Price</h3>
-              <p className="font-medium text-sm text-[#90A3BF]">
+              <h3 className="font-bold text-base lap:text-xl">Total Rental Price</h3>
+              <p className="hidden lap:block font-medium text-xs lap:text-sm text-[#90A3BF]">
                 Overall price and includes rental discount
               </p>
+              <p className="lap:hidden font-medium text-xs lap:text-sm text-[#90A3BF]">
+                Overall price rental
+              </p>
             </div>
-            <h2 className="font-bold text-[32px]">$80.00</h2>
+            <h2 className="font-bold text-xl lap:text-[32px]">$80.00</h2>
           </div>
         </div>
 
         <div className="space-y-8">
 
           {/* Card 2 */}
-          <div className="bg-white p-6 space-y-8 w-[524px] h-[324px] rounded-lg">
+          <div className="bg-white p-4 lap:p-6 space-y-8 lap:w-[524px] lap:h-[324px] rounded-lg">
             <div className="flex items-center justify-between">
-              <h3 className="font-bold text-xl">Top 5 Car Rental </h3>
+              <h3 className="font-bold text-base lap:text-xl">Top 5 Car Rental </h3>
               <Button variant={"ghost"}>
                 <Image
                   src={"icons/dots.svg"}
@@ -257,7 +267,8 @@ const page = () => {
                 />
               </Button>
             </div>
-            <div className="flex gap-6">
+
+            <div className="flex flex-col items-center lap:flex-row gap-6">
               <div className="relative flex-shrink-0">
                 <div className="flex flex-col items-center gap-2 absolute left-[70px] top-20">
                   <h2 className="font-bold text-2xl">72,030</h2>
@@ -320,9 +331,9 @@ const page = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="bg-white p-6 space-y-8 rounded-lg">
+          <div className="bg-white p-4 lap:p-6 space-y-8 rounded-lg">
             <div className="flex items-center justify-between">
-              <h3 className="font-bold text-xl">Recent Transaction</h3>
+              <h3 className="font-bold text-base lap:text-xl">Recent Transaction</h3>
               <Link href={"#"} className="font-medium text-xs text-b1">
                 View All
               </Link>
@@ -332,7 +343,7 @@ const page = () => {
                 <Image src={"cars/ad2.svg"} alt="car" width={114} height={36} className="object-cover"/>
                 <div className="flex justify-between w-full">
                   <div className="space-y-2">
-                    <p className="font-bold text-base">Nissan GT - R</p>
+                    <p className="font-bold text-sm lap:text-base">Nissan GT - R</p>
                     <p className="font-medium text-xs text-[#90A3BF]">Sport Car</p>
                   </div>
                   <div className="text-end space-y-2">
@@ -346,7 +357,7 @@ const page = () => {
                 <Image src={"cars/ad1.svg"} alt="car" width={114} height={36} className="object-cover"/>
                 <div className="flex justify-between w-full">
                   <div className="space-y-2">
-                    <p className="font-bold text-base">Koegnigsegg</p>
+                    <p className="font-bold text-sm lap:text-base">Koegnigsegg</p>
                     <p className="font-medium text-xs text-[#90A3BF]">Sport Car</p>
                   </div>
                   <div className="text-end space-y-2">
@@ -360,7 +371,7 @@ const page = () => {
                 <Image src={"cars/car3.svg"} alt="car" width={114} height={36} className="object-cover"/>
                 <div className="flex justify-between w-full">
                   <div className="space-y-2">
-                    <p className="font-bold text-base">Rolls - Royce</p>
+                    <p className="font-bold text-sm lap:text-base">Rolls - Royce</p>
                     <p className="font-medium text-xs text-[#90A3BF]">Sport Car</p>
                   </div>
                   <div className="text-end space-y-2">
@@ -374,7 +385,7 @@ const page = () => {
                 <Image src={"cars/car7.svg"} alt="car" width={114} height={36} className="object-cover"/>
                 <div className="flex justify-between w-full">
                   <div className="space-y-2">
-                    <p className="font-bold text-base">CR - V</p>
+                    <p className="font-bold text-sm lap:text-base">CR - V</p>
                     <p className="font-medium text-xs text-[#90A3BF]">SUV</p>
                   </div>
                   <div className="text-end space-y-2">
