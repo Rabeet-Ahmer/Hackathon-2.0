@@ -31,8 +31,11 @@ const page = () => {
   };
 
   return (
+    // Main div
     <main className="font-jakarta flex">
-      <div className="bg-white w-[286px] px-8 py-9 space-y-[60px]">
+
+      {/* Side bar, only for large screens */}
+      <div className="bg-white w-[286px] px-8 py-9 space-y-[60px] hidden lap:block">
         <div className="space-y-7">
           <p className="text-[#94A7CB]/40 text-xs font-semibold">MAIN MENU</p>
           <div className="grid gap-1">
@@ -149,7 +152,10 @@ const page = () => {
         </div>
       </div>
 
+      {/* Right side */}
       <div className="flex gap-8 p-8">
+
+        {/* Card 1 */}
         <div className="bg-white w-[534px] rounded-lg p-6 space-y-4">
           <h3 className="font-bold text-xl">Details Rental</h3>
           <Image
@@ -235,7 +241,10 @@ const page = () => {
             <h2 className="font-bold text-[32px]">$80.00</h2>
           </div>
         </div>
+
         <div className="space-y-8">
+
+          {/* Card 2 */}
           <div className="bg-white p-6 space-y-8 w-[524px] h-[324px] rounded-lg">
             <div className="flex items-center justify-between">
               <h3 className="font-bold text-xl">Top 5 Car Rental </h3>
@@ -310,6 +319,7 @@ const page = () => {
             </div>
           </div>
 
+          {/* Card 3 */}
           <div className="bg-white p-6 space-y-8 rounded-lg">
             <div className="flex items-center justify-between">
               <h3 className="font-bold text-xl">Recent Transaction</h3>
