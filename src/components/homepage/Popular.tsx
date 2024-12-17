@@ -1,7 +1,6 @@
 import React from "react";
 import Wrapper from "../special/Wrapper";
 import Card from "../special/Card";
-import { Button } from "../ui/button";
 import Link from "next/link";
 
 interface IHero{
