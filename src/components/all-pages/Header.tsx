@@ -8,7 +8,7 @@ const Header = () => {
     <header className="bg-white min-w-min">
 
       {/* main div */}
-      <div className="md:flex justify-center items-center py-10 space-y-8 md:space-y-0 px-6 md:px-0">
+      <div className="md:flex justify-center items-center py-10 space-y-8 md:space-y-0 px-6">
         <h3 className="font-jakarta font-bold text-b1 text-[32px]">MORENT</h3>
 
         {/* input field */}

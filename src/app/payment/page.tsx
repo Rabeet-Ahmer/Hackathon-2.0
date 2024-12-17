@@ -42,8 +42,13 @@ const page = () => {
   };
 
   return (
-    <main className="font-jakarta p-8 flex gap-8">
+    // Main div
+    <main className="font-jakarta p-8 flex gap-8"> 
+
+      {/* Left Side */}
       <div className="space-y-8">
+
+        {/* Card 1 */}
         <div className="bg-white w-[852px] p-6 space-y-8 rounded-lg">
           <div className="flex justify-between">
             <div>
@@ -87,6 +92,8 @@ const page = () => {
             </div>
           </div>
         </div>
+
+        {/* Card 2 */}
         <div className="bg-white w-[852px] p-6 space-y-8  rounded-lg">
           <div className="flex justify-between">
             <div>
@@ -130,6 +137,8 @@ const page = () => {
             </div>
           </div>
         </div>
+
+        {/* Card 3 */}
         <div className="bg-white w-[852px] p-6 space-y-8 rounded-lg">
           <div className="flex justify-between">
             <div>
@@ -212,7 +221,8 @@ const page = () => {
             />
           </div>
         </div>
-        <div></div>
+
+        {/* Card 4 */}
         <div className="bg-white w-[852px] p-6 space-y-8 rounded-lg">
           <div className="flex justify-between items-center">
             <div>
@@ -260,6 +270,7 @@ const page = () => {
         </div>
       </div>
 
+      {/* Right side | Detail Card */}
       <div className="bg-white w-[492px] h-[560px] rounded-lg p-6 space-y-8">
         <div className="space-y-1">
           <h3 className="font-bold text-xl">Rental Summary</h3>

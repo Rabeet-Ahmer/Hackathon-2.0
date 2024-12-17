@@ -41,22 +41,26 @@ const Hero = ({hidden}:IHero) => {
   return (
     <div>
       <Wrapper>
-        <div className="grid grid-cols-2 font-jakarta gap-8">
-          <div className={`${hidden && "hidden"} bg-b2 text-white space-y-5 p-6 min-w-[327px] min-h-[232px] md:w-[640px] md:h-[360px] relative rounded-lg `}>
+        <div className="flex flex-col items-center lap:grid grid-cols-2 font-jakarta gap-8">
+
+          {/* Card 1 */}
+          <div className={`${hidden && "hidden"} bg-b2 text-white space-y-5 p-6 w-[327px] min-h-[232px] sm:w-[600px]     md:w-[640px] sm:h-[360px] relative rounded-lg`}>
             <div className="w-[240px] lap:max-w-[284px] space-y-4">
-              <h1 className="font-semibold text-base whitespace-nowrap md:text-[32px]">
+              <h1 className="font-semibold text-base whitespace-nowrap sm:text-[32px]">
                 The Best Platform for Car Rental
               </h1>
-              <p className="font-medium text-xs md:text-base">
+              <p className="font-medium text-xs sm:text-base">
                 Ease of doing a car rental safely and reliably. Of course at a
                 low price.
               </p>
             </div>
             <Button className="bg-b1">Rental Car</Button>
-            <div className="absolute w-[196px] md:w-auto md:left-36 md:bottom-5">
+            <div className="absolute w-[196px] sm:w-auto sm:left-36 sm:bottom-5">
               <Image src={"cars/ad1.svg"} alt="cars" width={406} height={116} />
             </div>
           </div>
+
+          {/* Card 2 */}
           <div className={`hidden lap:block bg-b1 text-white space-y-5 p-6 w-[640px] h-[360px] relative rounded-lg ${hidden && "hidden lap:hidden"}`}>
             <div className="max-w-[284px] space-y-4">
               <h1 className="font-semibold text-[32px]">
@@ -73,15 +77,17 @@ const Hero = ({hidden}:IHero) => {
             </div>
           </div>
 
-          <div className="lap:flex col-span-2 items-center space-y-8 lap:space-y-0 lap:gap-11 relative "> 
+          {/* Pick up / Drop off card */}
+          <div className="lg:flex col-span-2 items-center space-y-8 lg:space-y-0 lg:gap-11 relative "> 
 
-           <div className={`bg-white w-[327px] lap:w-[582px] rounded-lg ${hidden && "w-[486px] lap:w-[486px]"}`}>
+            {/* Pick up card */}                                               {/* w-[486px] */}
+           <div className={`bg-white w-[327px] rounded-lg ${hidden ? "lap:w-[486px]":"lap:w-[582px]"}`}>
               <div className="space-y-4 px-4 lap:px-12 py-4">
                 <div className="flex items-center gap-3">
                   <p className="bg-b1 w-2 h-2 rounded-full outline outline-b2/30"></p>
                   <p className="font-semibold">Pick-Up</p>
                 </div>
-                <div className={`flex gap-4 lap:gap-6 ${hidden && "gap-[8px]"}`}>
+                <div className={`flex gap-4 ${hidden ? "gap-[8px]" :"lap:gap-6"}`}>
                   <div>
                     <Select2 item={Select1} />
                   </div>
@@ -101,7 +107,8 @@ const Hero = ({hidden}:IHero) => {
               </div>
             </div>
 
-            <Button className={`bg-b1 w-[60px] h-[60px] absolute top-[90px] left-32 lap:relative lap:top-0 lap:left-0 ${hidden && "absolute z-10 lap:absolute lap:z-10 lap:left-[478px] lap:top-8"}`} variant={"destructive"}>
+            {/* Switch button */}
+            <Button className={`bg-b1 shadow-xl w-[60px] h-[60px] absolute top-[90px] left-32 lg:relative lg:top-0 lg:left-0 ${hidden && "absolute z-10 lap:absolute lap:z-10 lap:left-[460px] lap:top-8"}`} variant={"destructive"}>
               <Image
                 src={"icons/switch.svg"}
                 alt="icon"
@@ -110,13 +117,14 @@ const Hero = ({hidden}:IHero) => {
               />
             </Button>
 
-            <div className={`bg-white w-[327px] lap:w-[582px] rounded-lg ${hidden && "w-[486px] lap:w-[486px]"}`}>
+            {/* Drop off card */}                                               {/* w-[486px] */}
+            <div className={`bg-white w-[327px] rounded-lg ${hidden ? "lap:w-[486px]":"lap:w-[582px]"}`}>
               <div className="space-y-4 px-4 lap:px-12 py-4">
                 <div className="flex items-center gap-3">
                   <p className="bg-b2 w-2 h-2 rounded-full outline outline-b2/30"></p>
                   <p className="font-semibold">Drop-Off</p>
                 </div>
-                <div className={`flex gap-4 lap:gap-6 ${hidden && "gap-[8px]"}`}>
+                <div className={`flex gap-4 ${hidden ? "gap-[8px]" :"lap:gap-6"}`}>
                   <div>
                   <Select2 item={Select1} />
                   </div>

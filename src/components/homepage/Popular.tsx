@@ -29,12 +29,18 @@ const Popular = ({hidden, scroll}:IHero) => {
 
   return (
     <Wrapper>
+
+      {/* Main div */}
       <div className="space-y-5">
+
+        {/* Card top */}
         <div className="font-jakarta font-semibold text-base flex justify-between items-center px-5">
           <p className="text-[#90A3BF]">Popular Car</p>
           <Button variant={"ghost"} className="text-b1">View All</Button>
         </div>
-        <div className={`flex overflow-x-auto lap:grid lap:grid-cols-4  ${hidden && "grid-cols-3 lap:grid-cols-3"} ${scroll && "hidden lap:hidden"}  gap-[19px] lap:gap-8 `}>
+
+        {/* Popular cars Card */}                                           
+        <div className={`flex overflow-x-auto gap-[19px] lap:gap-8  ${hidden && " lap:grid lap:grid-cols-3"} ${scroll && "hidden lap:hidden"}   `}>
         {
             cars.map((car,i)=>{
                 return(
@@ -43,7 +49,9 @@ const Popular = ({hidden, scroll}:IHero) => {
             })
         }
         </div>
-        <div className={`${scroll ? "flex overflow-x-auto gap-8 w-[327px] lap:w-full" :"hidden" }`}>
+
+        {/* Copy of above, displays if scroll is true */}
+        <div className={`${scroll ? "flex overflow-x-auto gap-8 w-full" :"hidden" }`}>
         {
             cars.map((car,i)=>{
                 return(

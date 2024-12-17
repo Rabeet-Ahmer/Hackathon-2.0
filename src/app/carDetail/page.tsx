@@ -26,7 +26,9 @@ const CarDetail = () => {
   ];
 
   return (
-    <div className="grid grid-cols-4">
+    <div className="lap:grid grid-cols-4">
+
+      {/* Slider */}
       <div className="p-8 bg-white w-[360px] col-span-1 hidden lap:block">
         <div className="space-y-14">
           <div className="font-jakarta space-y-8">
@@ -72,17 +74,19 @@ const CarDetail = () => {
           </div>
         </div>
       </div>
-      <div className="col-span-3 flex flex-col gap-8">
-        <div className="flex flex-col lap:flex-row gap-8 p-8">
-          <div className="font-jakarta space-y-6">
-            <div
-              className={`bg-b1 text-white space-y-5 p-6 w-[327px] h-[232px] lap:w-[492px] lap:h-[360px] relative rounded-lg`}
-            >
+
+      {/* Right side */}
+      <div className="lap:col-span-3 flex flex-col lg:gap-8">
+      {/* <div className="flex flex-col items-center gap-8"> */}
+      
+        <div className="flex flex-col items-center lg:flex-row lg:justify-center gap-8 p-8">
+          <div className="font-jakarta space-y-6 flex flex-col items-center">
+            <div className="bg-b1 relative text-white space-y-5 p-6 w-[327px] h-[232px] lg:w-[492px] lg:h-[360px] rounded-lg">
               <div className="max-w-[372px] space-y-4">
-                <h1 className="font-semibold text-base lap:text-[32px] lap:leading-tight">
+                <h1 className="font-semibold text-base lg:text-[32px] lg:leading-tight">
                   Sports car with the best design and acceleration
                 </h1>
-                <p className="font-medium text-xs lap:text-base">
+                <p className="font-medium text-xs lg:text-base">
                   Safety and comfort while driving a futuristic and elegant
                   sports car
                 </p>
@@ -93,39 +97,41 @@ const CarDetail = () => {
                   alt="cars"
                   width={340}
                   height={108}
-                  className="w-[190px] lap:w-auto"
+                  className="w-[190px] lg:w-auto"
                 />
               </div>
             </div>
-            <div className="flex gap-12 lap:gap-6">
+
+            <div className="flex gap-12 lg:gap-6">
               <Image
                 src={"cars/detail1.svg"}
                 alt="car"
                 width={148}
                 height={124}
-                className="h-16 object-cover lap:h-auto"
+                className="h-16 object-cover rounded-md lg:h-auto"
               />
               <Image
                 src={"cars/detail2.svg"}
                 alt="car"
                 width={148}
                 height={124}
-                className="h-16 object-cover lap:h-auto"
+                className="h-16 object-cover rounded-md lg:h-auto"
               />
               <Image
                 src={"cars/detail3.svg"}
                 alt="car"
                 width={148}
                 height={124}
-                className="h-16 lap:h-auto"
+                className="h-16 object-cover rounded-md lg:h-auto"
               />
             </div>
           </div>
+
           <div>
-            <div className="font-jakarta p-6 bg-white w-[327px] lap:w-[492px] lap:h-[508px] space-y-8 rounded-lg">
+            <div className="font-jakarta p-6 bg-white w-[327px] lg:w-[492px] lg:h-[508px] space-y-8 rounded-lg">
               <div className="flex justify-between items-start">
                 <div>
-                  <h2 className="font-bold text-xl lap:text-[32px]">Nissan GT - R</h2>
+                  <h2 className="font-bold text-xl lg:text-[32px]">Nissan GT - R</h2>
                   <div className="flex items-center gap-2">
                     <Image
                       src={"icons/stars.svg"}
@@ -133,7 +139,7 @@ const CarDetail = () => {
                       width={108}
                       height={20}
                     />
-                    <p className="text-[#596780] text-xs lap:text-sm">440+ Reviewer</p>
+                    <p className="text-[#596780] text-xs lg:text-sm">440+ Reviewer</p>
                   </div>
                 </div>
                 <Image
@@ -144,13 +150,13 @@ const CarDetail = () => {
                 />
               </div>
               <div>
-                <p className="font-normal text-xs lap:text-xl text-[#596780] leading-loose">
+                <p className="font-normal text-xs lg:text-xl text-[#596780] leading-loose">
                   NISMO has become the embodiment of Nissan&apos;s outstanding
                   performance, inspired by the most unforgiving proving ground,
                   the &quot;race track&quot;.
                 </p>
               </div>
-              <div className="grid grid-cols-4 font-jakarta text-xs lap:text-xl gap-4 ">
+              <div className="grid grid-cols-4 font-jakarta text-xs lg:text-xl gap-4 ">
                 <p className="text-[#90A3BF]">Type Car</p>
                 <p className="text-[#596780] font-semibold text-end">Sport</p>
                 <p className="text-[#90A3BF] ">Capacity</p>
@@ -172,7 +178,9 @@ const CarDetail = () => {
             </div>
           </div>
         </div>
-        <div className="bg-white p-6 space-y-8 min-w-[327px] m-8 rounded-md">
+
+        {/* Reviews */}
+        <div className="bg-white p-6 space-y-8 min-w-[327px] m-6 lap:m-8 rounded-md">
           <div className="flex items-center font-jakarta gap-3">
             <h1 className="font-semibold text-xl">Reviews</h1>
             <p className="bg-b1 rounded-md text-white flex items-center justify-between px-4 py-1">
@@ -235,7 +243,7 @@ const CarDetail = () => {
           </div>
           <Button variant={"ghost"} className="font-jakarta font-semibold text-base text-[#90A3BF] flex justify-self-center">Show All</Button>
         </div>
-        <div className="">
+        <div>
             <Popular scroll={true}/>
             <Recomended scroll={true}/>
         </div>

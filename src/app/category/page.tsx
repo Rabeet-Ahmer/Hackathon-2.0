@@ -24,9 +24,16 @@ const Category = () => {
   ];
 
   return (
+
+    // Main div
     <div className="lap:grid grid-cols-4">
+
+      {/* Side bar, only for large screens */}
       <div className="p-8 bg-white w-[360px] col-span-1 hidden lap:block">
+
         <div className="space-y-14">
+          
+          {/* Upper part */}
           <div className="font-jakarta space-y-8">
             <p className="font-semibold text-xs text-[#90A3BF]">TYPE</p>
             {check.map((item, i) => {
@@ -44,6 +51,8 @@ const Category = () => {
               );
             })}
           </div>
+
+          {/* Lower part */}
           <div className="font-jakarta space-y-8">
             <p className="font-semibold text-xs text-[#90A3BF]">CAPACITY</p>
             {check2.map((item, i) => {
@@ -61,6 +70,8 @@ const Category = () => {
               );
             })}
           </div>
+
+          {/* Slider */}
           <div className="font-jakarta space-y-8 w-[296px] ">
             <p className="font-semibold text-xs text-[#90A3BF]">PRICE</p>
             <div>
@@ -70,6 +81,8 @@ const Category = () => {
           </div>
         </div>
       </div>
+
+      {/* Home components */}
       <div className="lap:col-span-3">
       <Hero hidden={true}/>
       <Popular hidden={true}/>
