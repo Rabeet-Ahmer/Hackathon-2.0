@@ -31,7 +31,7 @@ const Popular = ({hidden, scroll}:IHero) => {
     <Wrapper>
 
       {/* Main div */}
-      <div className="space-y-5 w-screen lap:w-full">
+      <div className="space-y-5 w-screen lg:w-full">
 
         {/* Card top */}
         <div className="font-jakarta font-semibold text-base flex justify-between items-center px-5">
