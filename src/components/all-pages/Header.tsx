@@ -2,6 +2,7 @@ import React from "react";
 import { Input } from "../ui/input";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -9,7 +10,7 @@ const Header = () => {
 
       {/* main div */}
       <div className="md:flex justify-center items-center py-10 space-y-8 md:space-y-0 px-6">
-        <h3 className="font-jakarta font-bold text-b1 text-[32px]">MORENT</h3>
+        <Link href={"/"}><h3 className="font-jakarta font-bold text-b1 text-[32px]">MORENT</h3></Link>
 
         {/* input field */}
         <div className="flex border border-gray-300 rounded-lg md:rounded-full md:w-auto lap:w-[492px] md:ml-16 py-1">
@@ -23,7 +24,7 @@ const Header = () => {
           </Button>
           <Input
             placeholder="Search something here"
-            className="font-jakarta text-sm border-none shadow-none"
+            className="font-jakarta text-sm border-none shadow-none focus-visible:ring-0"
           />
           <Button variant={"ghost"} className="rounded-full">
             <Image
@@ -65,7 +66,7 @@ const Header = () => {
               className="min-w-6"
             />
           </Button>
-          <Button variant={"ghost"} className="p-0 absolute right-5 top-[44px] md:relative md:top-0 md:right-0">
+          <Button variant={"ghost"} className="p-0 absolute right-0 top-[44px] md:relative md:top-0 md:right-0">
             <Image
               src={"icons/img.svg"}
               alt="icon"

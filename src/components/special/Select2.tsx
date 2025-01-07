@@ -48,9 +48,9 @@ const Select2 = ({ item }: { item: ISelect }) => {
           <SelectValue placeholder={item.placeholder} />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="0">{item.item1}</SelectItem>
-          <SelectItem value="0">{item.item2}</SelectItem>
-          <SelectItem value="0">{item.item3}</SelectItem>
+          <SelectItem value={'item.item1'}>{item.item1}</SelectItem>
+          <SelectItem value={'item.item2'}>{item.item2}</SelectItem>
+          <SelectItem value={'item.item3'}>{item.item3}</SelectItem>
         </SelectContent>
       </Select>
     </div>

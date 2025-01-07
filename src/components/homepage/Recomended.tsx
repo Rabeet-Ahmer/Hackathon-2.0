@@ -114,14 +114,14 @@ const Recomended = ({hidden, scroll}:IHero) => {
         </div>
 
         {/* Recomendation cars Card */}
-        <div className={`grid grid-cols-1 items-center gap-5 ${hidden && "lap:grid lap:grid-cols-3 lap:gap-8"} ${scroll ? "hidden lap:hidden": ""} sm:grid sm:grid-cols-2 sm:justify-center lg:grid-cols-3`}>
+        <div className={`grid grid-cols-1 items-center gap-5 ${hidden && "lap:grid lap:grid-cols-3 lap:gap-8"} ${scroll ? "hidden lap:hidden": ""} sm:grid-cols-2 sm:justify-center lg:grid-cols-4`}>
           {cars.map((car, i) => {
             return <Card key={i} item={car} />;
           })}
         </div>
 
         {/* Copy of above, displays if scroll is true */}
-        <div className={`${scroll ? "flex overflow-x-auto gap-8 w-full sm:hidden lap:flex" :"hidden" }`}>
+        <div className={`${scroll ? "grid overflow-x-auto gap-8 w-full sm:grid-cols-2 lap:flex" :"hidden" }`}>
           {cars.map((car, i) => {
             return <Card key={i} item={car} />;
           })}

@@ -28,7 +28,7 @@ const CarDetail = () => {
   return (
     <div className="lap:grid grid-cols-4">
 
-      {/* Slider */}
+      {/* Side bar */}
       <div className="p-8 bg-white w-[360px] col-span-1 hidden lap:block">
         <div className="space-y-14">
           <div className="font-jakarta space-y-8">

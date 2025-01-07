@@ -43,7 +43,7 @@ const page = () => {
 
   return (
     // Main div 
-    <main className="font-jakarta p-8 flex gap-8 flex-col-reverse items-center lap:flex-row lap:items-start"> 
+    <main className="font-jakarta p-8 flex gap-8 flex-col-reverse items-center lap:flex-row lap:items-start justify-self-center"> 
 
       {/* Left Side */}
       <div className="space-y-8">

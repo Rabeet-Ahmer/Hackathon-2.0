@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="md:bg-white">
       <Wrapper>
         {/* upper footer */}
-        <div className="md:border-b pb-10">
+        <div className="md:border-b pb-10 lap:justify-self-center">
           <div className="flex flex-col md:flex-row md:justify-between lap:justify-normal gap-[48px] lap:gap-[452px] pt-20">
             <div className="max-w-[292px] space-y-4">
               <h3 className="font-jakarta font-bold text-b1 text-[32px]">
