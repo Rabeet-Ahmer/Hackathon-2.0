@@ -307,7 +307,7 @@ const page = () => {
             </div>
         </div>
         <div className="bg-[#F6F7F9] rounded-lg flex lap:px-8 lap:py-3">
-            <Input placeholder="Apply promo code" className="border-none shadow-none font-medium text-xs lap:text-sm"/>
+            <Input placeholder="Apply promo code" className="border-none shadow-none font-medium text-xs lap:text-sm focus-visible:ring-0"/>
             <Button variant={"ghost"} className="font-semibold text-xs lap:text-base">Apply Now</Button>
         </div>
         <div className="flex items-center justify-between">
