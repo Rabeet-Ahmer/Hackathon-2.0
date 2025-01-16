@@ -8,7 +8,13 @@ import Button2 from "@/components/special/Button2";
 import Popular from "@/components/homepage/Popular";
 import Recomended from "@/components/homepage/Recomended";
 
-const CarDetail = () => {
+type Props = {
+  params: Promise<{ car: string }>
+};
+
+const CarDetail = async ( {params}: Props ) => {
+  const {car} = await params
+
   const check = [
     { text: "Sport", num: 10 },
     { text: "SUV", num: 12 },
