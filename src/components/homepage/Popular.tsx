@@ -2,30 +2,47 @@ import React from "react";
 import Wrapper from "../special/Wrapper";
 import Card from "../special/Card";
 import Link from "next/link";
+import { client } from "@/sanity/lib/client";
 
 interface IHero{
     hidden?: boolean
     scroll?: boolean
 }
 
-const Popular = ({hidden, scroll}:IHero) => {
+interface ICars {
+  _id: string,
+  name: string,
+  type: string,
+  tags: string[],
+  seatingCapacity: string,
+  transmission: string,
+  fuelCapacity: string,
+  pricePerDay: string,
+  image_url: string
+}
 
-    type TCar = {
-        car: string,
-        desc: string,
-        carImg: string,
-        fuel: number,
-        auto: string,
-        people: number,
-        price: string
-    }
+const fetchData = async () => {
+  try {
+    const cars = await client.fetch(`*[_type=="car" && "popular" in tags][0..3]{
+  _id,
+  name,
+    type,
+    tags,
+    seatingCapacity,
+    transmission,
+    fuelCapacity,
+    pricePerDay,
+    "image_url":image.asset->url
+}`);
+  return cars;
+  } catch (error) {
+    console.error("Error:", error)
+  }
+}
 
-    const cars:TCar[] = [
-        {car:"Koenigsegg", desc:"Sport", carImg:"cars/ad1.svg", fuel:90, auto:"Manual", people:2, price:"99.00"},
-        {car:"Nissan GT - R", desc:"Sport", carImg:"cars/ad2.svg", fuel:80, auto:"Manual", people:2, price:"80.00"},
-        {car:"Rolls - Royce", desc:"Sedan", carImg:"cars/car3.svg", fuel:70, auto:"Manual", people:4, price:"96.00"},
-        {car:"Nissan GT - R", desc:"Sport", carImg:"cars/ad2.svg", fuel:80, auto:"Manual", people:2, price:"80.00"},
-        ]
+const Popular = async ({hidden, scroll}:IHero) => {
+
+    const car:ICars[] = await fetchData()
 
   return (
     <Wrapper>
@@ -42,9 +59,9 @@ const Popular = ({hidden, scroll}:IHero) => {
         {/* Popular cars Card */}                                           
         <div className={`flex overflow-x-auto gap-[19px] lap:gap-8  ${hidden && " lap:grid lap:grid-cols-3"} ${scroll && "hidden lap:hidden"}`}>
         {
-            cars.map((car,i)=>{
+            car.map((car)=>{
                 return(
-                    <Card key={i} item={car}/>
+                    <Card key={car._id} item={car} />
                 )
             })
         }
@@ -53,9 +70,9 @@ const Popular = ({hidden, scroll}:IHero) => {
         {/* Copy of above, displays if scroll is true */}
          <div className={`${scroll ? "grid sm:grid-cols-2 lap:flex overflow-x-auto gap-8 w-full" :"hidden" }`}>
         {
-            cars.map((car,i)=>{
+            car.map((car)=>{
                 return(
-                    <Card key={i} item={car}/>
+                    <Card key={car._id} item={car}/>
                 )
             })
         }

@@ -2,106 +2,47 @@ import React from "react";
 import Wrapper from "../special/Wrapper";
 import Card from "../special/Card";
 import Button2 from "../special/Button2";
+import { client } from "@/sanity/lib/client";
 
 interface IHero{
     hidden?: boolean
     scroll?: boolean
 }
 
-const Recomended = ({hidden, scroll}:IHero) => {
-  type TCar = {
-    car: string;
-    desc: string;
-    carImg: string;
-    fuel: number;
-    auto: string;
-    people: number;
-    price: string;
-    height?: boolean;
-  };
+interface ICars {
+  _id: string,
+  name: string,
+  type: string,
+  tags: string[],
+  seatingCapacity: string,
+  transmission: string,
+  fuelCapacity: string,
+  pricePerDay: string,
+  image_url: string
+}
 
-  const cars: TCar[] = [
-    {
-      car: "All New Rush",
-      desc: "SUV",
-      carImg: "cars/car4.svg",
-      fuel: 70,
-      auto: "Manual",
-      people: 6,
-      price: "72.00",
-      height: true
-    },
-    {
-      car: "CR  - V",
-      desc: "SUV",
-      carImg: "cars/car5.svg",
-      fuel: 80,
-      auto: "Manual",
-      people: 6,
-      price: "80.00",
-      height: true
-    },
-    {
-      car: "All New Terios",
-      desc: "SUV",
-      carImg: "cars/car6.svg",
-      fuel: 90,
-      auto: "Manual",
-      people: 6,
-      price: "74.00",
-      height: true
-    },
-    {
-      car: "CR  - V",
-      desc: "SUV",
-      carImg: "cars/car7.svg",
-      fuel: 80,
-      auto: "Manual",
-      people: 6,
-      price: "80.00",
-      height: true
-    },
-    {
-      car: "MG ZX Exclusice",
-      desc: "Hatchback",
-      carImg: "cars/car8.svg",
-      fuel: 70,
-      auto: "Manual",
-      people: 4,
-      price: "76.00",
-      height: true
-    },
-    {
-      car: "New MG ZS",
-      desc: "SUV",
-      carImg: "cars/car9.svg",
-      fuel: 80,
-      auto: "Manual",
-      people: 6,
-      price: "80.00",
-      height: true
-    },
-    {
-      car: "MG ZX Exclusice",
-      desc: "Hatchback",
-      carImg: "cars/car8.svg",
-      fuel: 70,
-      auto: "Manual",
-      people: 4,
-      price: "76.00",
-      height: true
-    },
-    {
-      car: "New MG ZS",
-      desc: "SUV",
-      carImg: "cars/car9.svg",
-      fuel: 80,
-      auto: "Manual",
-      people: 6,
-      price: "80.00",
-      height: true
-    },
-  ];
+const fetchData = async () => {
+  try {
+    const cars = await client.fetch(`*[_type=="car" && "recommended" in tags]{
+  _id,
+  name,
+    type,
+    tags,
+    seatingCapacity,
+    transmission,
+    fuelCapacity,
+    pricePerDay,
+    "image_url":image.asset->url
+}`);
+  return cars;
+  } catch (error) {
+    console.error("Error:", error)
+  }
+}
+
+const Recomended = async ({hidden, scroll}:IHero) => {
+  
+  const car:ICars[] = await fetchData(); 
   return (
     <Wrapper>
 
@@ -115,22 +56,22 @@ const Recomended = ({hidden, scroll}:IHero) => {
 
         {/* Recomendation cars Card */}
         <div className={`grid grid-cols-1 items-center gap-5 ${hidden && "lap:grid lap:grid-cols-3 lap:gap-8"} ${scroll ? "hidden lap:hidden": ""} sm:grid-cols-2 sm:justify-center lg:grid-cols-4`}>
-          {cars.map((car, i) => {
-            return <Card key={i} item={car} />;
+          {car.map((car) => {
+            return <Card key={car._id} item={car} height={true} />;
           })}
         </div>
 
         {/* Copy of above, displays if scroll is true */}
         <div className={`${scroll ? "grid overflow-x-auto gap-8 w-full sm:grid-cols-2 lap:flex" :"hidden" }`}>
-          {cars.map((car, i) => {
-            return <Card key={i} item={car} />;
+          {car.map((car) => {
+            return <Card key={car._id} item={car} height={true}/>;
           })}
         </div>
 
         {/* Button */}
         <div className={`flex items-center justify-between gap-[49px] lap:justify-self-end lap:gap-[525px] ${scroll && "hidden"} ${hidden && "lap:gap-[300px]"} py-16`}>
           <Button2 path="/category" text="Show more car" />
-          <p className="font-jakarta text-[#90A3BF] whitespace-nowrap">120 car</p>
+          <p className="font-jakarta text-[#90A3BF] whitespace-nowrap">{car.length} car</p>
         </div>
       </div>
     </Wrapper>
