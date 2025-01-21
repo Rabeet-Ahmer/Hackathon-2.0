@@ -1,4 +1,3 @@
-import React from "react";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -7,9 +6,51 @@ import { Button } from "@/components/ui/button";
 import Button2 from "@/components/special/Button2";
 import Popular from "@/components/homepage/Popular";
 import Recomended from "@/components/homepage/Recomended";
+import { client } from "@/sanity/lib/client";
 
-const CarDetail = () => {
+interface Car {
+  _id: string;
+  name: string;
+  type: string;
+  tags: string[];
+  seatingCapacity: string;
+  transmission: string;
+  fuelCapacity: string;
+  pricePerDay: string;
+  image_url: string;
+}
 
+const fetchData = async (id: string): Promise<Car[] | null> => {
+  try {
+    const data = await client.fetch(`*[_type=="car" && _id == $id]{
+    _id,
+    name,
+      type,
+      tags,
+      seatingCapacity,
+      transmission,
+      fuelCapacity,
+      pricePerDay,
+      "image_url":image.asset->url
+  }`,{id});
+  return data;
+  } catch (error) {
+    console.error("Error fetching data in detail page", error);
+    return null;
+  }
+};
+
+interface Props {
+  params: { id: string }; 
+}
+
+const CarDetail = async ({ params }: Props) => {
+  const { id } = await params;
+  const car = await fetchData(id);
+  if (!car) {
+    throw new Error("message: Car not found")
+  }
+  
   const check = [
     { text: "Sport", num: 10 },
     { text: "SUV", num: 12 },
@@ -78,51 +119,52 @@ const CarDetail = () => {
 
       {/* Right side */}
       <div className="lap:col-span-3 flex flex-col lg:gap-8">
-      
-        <div className="flex flex-col items-center lg:flex-row lg:justify-center gap-8 p-8">
+        {car.map((item) => {
+          return(
+        <div key={item._id} className="flex flex-col items-center md:flex-row md:justify-center gap-8 p-8">
           <div className="font-jakarta space-y-6 flex flex-col items-center">
             <div className="bg-b1 relative text-white space-y-5 p-6 w-[327px] h-[232px] lg:w-[492px] lg:h-[360px] rounded-lg">
               <div className="max-w-[372px] space-y-4">
                 <h1 className="font-semibold text-base lg:text-[32px] lg:leading-tight">
-                  Sports car with the best design and acceleration
+                  {item.type} car with the best design and acceleration
                 </h1>
                 <p className="font-medium text-xs lg:text-base">
                   Safety and comfort while driving a futuristic and elegant
-                  sports car
+                   {item.type} car
                 </p>
               </div>
               <div className="absolute bottom-5 right-24">
                 <Image
-                  src={"cars/ad2.svg"}
+                  src={item.image_url}
                   alt="cars"
                   width={340}
                   height={108}
-                  className="w-[190px] lg:w-auto"
+                  className="aspect-auto w-[190px] md:w-[300px]"
                 />
               </div>
             </div>
 
-            <div className="flex gap-12 lg:gap-6">
+            <div className="flex gap-12 md:gap-6">
               <Image
-                src={"cars/detail1.svg"}
+                src={"/cars/detail1.svg"}
                 alt="car"
                 width={148}
                 height={124}
-                className="h-16 object-cover rounded-md lg:h-auto"
+                className="h-16 aspect-auto object-cover rounded-md lg:h-auto"
               />
               <Image
-                src={"cars/detail2.svg"}
+                src={"/cars/detail2.svg"}
                 alt="car"
                 width={148}
                 height={124}
-                className="h-16 object-cover rounded-md lg:h-auto"
+                className="h-16 object-cover aspect-auto rounded-md lg:h-auto"
               />
               <Image
-                src={"cars/detail3.svg"}
+                src={"/cars/detail3.svg"}
                 alt="car"
                 width={148}
                 height={124}
-                className="h-16 object-cover rounded-md lg:h-auto"
+                className="h-16 object-cover aspect-auto rounded-md lg:h-auto"
               />
             </div>
           </div>
@@ -131,10 +173,10 @@ const CarDetail = () => {
             <div className="font-jakarta p-6 bg-white w-[327px] lg:w-[492px] lg:h-[508px] space-y-8 rounded-lg">
               <div className="flex justify-between items-start">
                 <div>
-                  <h2 className="font-bold text-xl lg:text-[32px]">Nissan GT - R</h2>
+                  <h2 className="font-bold text-xl lg:text-[32px]">{item.name}</h2>
                   <div className="flex items-center gap-2">
                     <Image
-                      src={"icons/stars.svg"}
+                      src={"/icons/stars.svg"}
                       alt="stars"
                       width={108}
                       height={20}
@@ -143,7 +185,7 @@ const CarDetail = () => {
                   </div>
                 </div>
                 <Image
-                  src={"icons/heart3.svg"}
+                  src={"/icons/heart3.svg"}
                   alt="icon"
                   width={24}
                   height={24}
@@ -158,26 +200,35 @@ const CarDetail = () => {
               </div>
               <div className="grid grid-cols-4 font-jakarta text-xs lg:text-xl gap-4 ">
                 <p className="text-[#90A3BF]">Type Car</p>
-                <p className="text-[#596780] font-semibold text-end">Sport</p>
+                <p className="text-[#596780] font-semibold text-end">{item.type}</p>
                 <p className="text-[#90A3BF] ">Capacity</p>
                 <p className="text-[#596780] font-semibold text-end">
-                  2 Person
+                  {item.seatingCapacity}
                 </p>
                 <p className="text-[#90A3BF] ">Steering</p>
-                <p className="text-[#596780] font-semibold text-end">Manual</p>
+                <p className="text-[#596780] font-semibold text-end">{item.transmission}</p>
                 <p className="text-[#90A3BF]">Gasoline</p>
-                <p className="text-[#596780] font-semibold text-end">70L</p>
+                <p className="text-[#596780] font-semibold text-end">{item.fuelCapacity}</p>
               </div>
               <div className="flex justify-between ">
                 <div className="flex items-center">
-                  <p className="font-bold text-xl">$80.00/</p>
-                  <p className="text-[#90A3BF] text-sm">day</p>
+                <p className="font-bold text-lg">
+              {item.pricePerDay.includes("/day") ? (
+                item.pricePerDay
+              ) : (
+                <>
+                  {item.pricePerDay}/
+                  <span className="text-[#90A3BF] text-sm">day</span>
+                </>
+              )}
+            </p>
                 </div>
-                <Button2 path="/payment" text="Rent Now" />
+                <Button2 path={`/payment/${item._id}`} text="Rent Now" />
               </div>
             </div>
           </div>
-        </div>
+        </div>)
+        })}
 
         {/* Reviews */}
         <div className="bg-white p-6 space-y-8 min-w-[327px] m-6 lap:m-8 rounded-md">
@@ -188,7 +239,7 @@ const CarDetail = () => {
             </p>
           </div>
           <div className="flex items-start gap-4 font-jakarta">
-            <Image src={"icons/img.svg"} alt="image" width={56} height={56} className="min-w-14"/>
+            <Image src={"/icons/img.svg"} alt="image" width={56} height={56} className="min-w-14"/>
             <div className="space-y-3">
               <div className="flex justify-between">
                 <div className="space-y-2">
@@ -198,7 +249,7 @@ const CarDetail = () => {
                 <div className="space-y-2 flex flex-col items-end">
                   <p className="text-[#90A3BF] font-medium text-sm">21 July 2022</p>
                   <Image
-                    src={"icons/stars.svg"}
+                    src={"/icons/stars.svg"}
                     alt="stars"
                     width={108}
                     height={20}
@@ -217,7 +268,7 @@ const CarDetail = () => {
           </div>
 
           <div className="flex items-start gap-4 font-jakarta">
-            <Image src={"icons/img2.svg"} alt="image" width={56} height={56} />
+            <Image src={"/icons/img2.svg"} alt="image" width={56} height={56} />
             <div className="space-y-3">
               <div className="flex justify-between">
                 <div className="space-y-2">
@@ -227,7 +278,7 @@ const CarDetail = () => {
                 <div className="space-y-2 flex flex-col items-end">
                   <p className="text-[#90A3BF] font-medium text-sm">20 July 2022</p>
                   <Image
-                    src={"icons/stars.svg"}
+                    src={"/icons/stars.svg"}
                     alt="stars"
                     width={108}
                     height={20}

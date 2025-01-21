@@ -5,10 +5,55 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
+import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import React from "react";
 
-const page = () => {
+interface Car {
+  _id: string;
+  name: string;
+  type: string;
+  tags: string[];
+  seatingCapacity: string;
+  transmission: string;
+  fuelCapacity: string;
+  pricePerDay: string;
+  image_url: string;
+}
+
+const fetchData = async (id: string): Promise<Car[] | null> => {
+  try {
+    const data = await client.fetch(
+      `*[_type=="car" && _id == $id]{
+    _id,
+    name,
+      type,
+      tags,
+      seatingCapacity,
+      transmission,
+      fuelCapacity,
+      pricePerDay,
+      "image_url":image.asset->url
+  }`,{ id });
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching data in detail page", error);
+    return null;
+  }
+};
+
+interface Props {
+  params: { id: string };
+}
+
+const page = async ({ params }: Props) => {
+  const { id } = await params;
+  const car = await fetchData(id);
+  if (!car) {
+    throw new Error("Error fetching car in payment page")
+  }
+
   type TSelect = {
     label: string;
     placeholder: string;
@@ -42,12 +87,10 @@ const page = () => {
   };
 
   return (
-    // Main div 
-    <main className="font-jakarta p-8 flex gap-8 flex-col-reverse items-center lap:flex-row lap:items-start justify-self-center"> 
-
+    // Main div
+    <main className="font-jakarta p-8 flex gap-8 flex-col-reverse items-center lap:flex-row lap:items-start justify-self-center">
       {/* Left Side */}
       <div className="space-y-8">
-
         {/* Card 1 */}
         <div className="bg-white w-[327px] lap:w-[852px] p-4 lap:p-6 space-y-8 rounded-lg ">
           <div className="flex justify-between">
@@ -70,7 +113,9 @@ const page = () => {
               />
             </div>
             <div className="w-[295px] lap:w-[386px] space-y-4">
-              <p className="font-semibold text-sm lap:text-base">Phone Number</p>
+              <p className="font-semibold text-sm lap:text-base">
+                Phone Number
+              </p>
               <Input
                 placeholder="Phone number"
                 className="font-medium text-xs lap:text-sm text-[#90A3BF] border-none shadow-none py-7 px-8 bg-[#F6F7F9]"
@@ -142,7 +187,9 @@ const page = () => {
         <div className="bg-white w-[327px] lap:w-[852px] p-4 lap:p-6 space-y-8 rounded-lg ">
           <div className="flex justify-between">
             <div>
-              <h3 className="font-bold text-base lap:text-xl">Payment Method</h3>
+              <h3 className="font-bold text-base lap:text-xl">
+                Payment Method
+              </h3>
               <p className="font-medium text-xs lap:text-sm text-[#90A3BF] col-span-2">
                 Please enter your payment method
               </p>
@@ -157,7 +204,7 @@ const page = () => {
                 <p className="bg-b1 w-2 h-2 rounded-full outline outline-b2/30"></p>
                 <p className="font-semibold">Credit Card</p>
               </div>
-              <Image src={"pay/visa.svg"} alt="visa" width={92} height={20} />
+              <Image src={"/pay/visa.svg"} alt="visa" width={92} height={20} />
             </div>
             <div className="grid lap:grid-cols-2 gap-8">
               <div className="w-[263px] lap:w-[362px] space-y-4">
@@ -199,7 +246,7 @@ const page = () => {
               <Label className="font-semibold text-base">PayPal</Label>
             </RadioGroup>
             <Image
-              src={"pay/paypal.svg"}
+              src={"/pay/paypal.svg"}
               alt="paypal"
               width={100}
               height={24}
@@ -208,13 +255,13 @@ const page = () => {
           <div className="flex items-center justify-between bg-[#F6F7F9] px-5 lap:px-8 py-4 rounded-lg">
             <RadioGroup className="flex items-center space-x-2">
               <RadioGroupItem
-                value="default"
+                value="destructive"
                 className="border-[#90A3BF] bg-white"
               />
               <Label className="font-semibold text-base">Bitcoin</Label>
             </RadioGroup>
             <Image
-              src={"pay/bitcoin.svg"}
+              src={"/pay/bitcoin.svg"}
               alt="paypal"
               width={94}
               height={20}
@@ -258,7 +305,12 @@ const page = () => {
             Rent Now
           </Button>
           <div className="space-y-4">
-            <Image src={"pay/shield.svg"} alt="shield" width={32} height={32} />
+            <Image
+              src={"/pay/shield.svg"}
+              alt="shield"
+              width={32}
+              height={32}
+            />
             <div className="space-y-2">
               <p className="font-semibold text-base">All your data are safe</p>
               <p className="font-medium text-sm text-[#90A3BF]">
@@ -271,54 +323,93 @@ const page = () => {
       </div>
 
       {/* Right side | Detail Card */}
-      <div className="bg-white w-[327px] lap:w-[492px] lap:h-[560px] rounded-lg p-6 space-y-8">
-        <div className="space-y-1">
-          <h3 className="font-bold text-base lap:text-xl">Rental Summary</h3>
-          <p className="text-[#90A3BF] font-medium text-xs lap:text-sm">
-            Prices may change depending on the length of the rental and the
-            price of your rental car.
-          </p>
-        </div>
-        <div className="flex items-center gap-4">
-          <Image src={"cars/detail1.svg"} alt="car" width={132} height={108} className="w-[116px] h-[80px] lap:h-auto lap:w-auto" />
-          <div>
-            <h2 className="font-bold text-xl lap:text-[32px]">Nissan GT - R</h2>
-            <div className="flex flex-col lap:flex-row gap-2">
+      {car.map((item) => {
+        return (
+          <div
+            key={item._id}
+            className="bg-white w-[327px] lap:w-[492px] lap:h-[560px] rounded-lg p-6 space-y-8"
+          >
+            <div className="space-y-1">
+              <h3 className="font-bold text-base lap:text-xl">
+                Rental Summary
+              </h3>
+              <p className="text-[#90A3BF] font-medium text-xs lap:text-sm">
+                Prices may change depending on the length of the rental and the
+                price of your rental car.
+              </p>
+            </div>
+            <div className="flex items-center gap-4">
               <Image
-                src={"icons/stars.svg"}
-                alt="stars"
-                width={108}
-                height={20}
-                className="w-[76px] lap:w-auto"
+                src={item.image_url}
+                alt="car"
+                width={132}
+                height={108}
+                className="aspect-auto"
               />
-              <p className="text-[#596780]">440+ Reviewer</p>
+              <div>
+                <h2 className="font-bold text-xl lap:text-[32px]">
+                  {item.name}
+                </h2>
+                <div className="flex flex-col lap:flex-row gap-2">
+                  <Image
+                    src={"/icons/stars.svg"}
+                    alt="stars"
+                    width={108}
+                    height={20}
+                    className="w-[76px] lap:w-auto"
+                  />
+                  <p className="text-[#596780]">440+ Reviewer</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <Separator/>
-        <div className="space-y-5">
-            <div className="flex justify-between text-base">
+            <Separator />
+            <div className="space-y-5">
+              <div className="flex justify-between text-base">
                 <p className="font-medium text-[#90A3BF]">Subtotal</p>
-                <p className="font-semibold">$80.00</p>
-            </div>
-            <div className="flex justify-between text-base">
+                <p className="font-semibold">
+                  {item.pricePerDay.includes("/day")
+                    ? item.pricePerDay.replace("/day", "")
+                    : item.pricePerDay}
+                </p>
+              </div>
+              <div className="flex justify-between text-base">
                 <p className="font-medium text-[#90A3BF]">Tax</p>
                 <p className="font-semibold">$0</p>
+              </div>
             </div>
-        </div>
-        <div className="bg-[#F6F7F9] rounded-lg flex lap:px-8 lap:py-3">
-            <Input placeholder="Apply promo code" className="border-none shadow-none font-medium text-xs lap:text-sm focus-visible:ring-0"/>
-            <Button variant={"ghost"} className="font-semibold text-xs lap:text-base">Apply Now</Button>
-        </div>
-        <div className="flex items-center justify-between">
-            <div className="space-y-1">
-                <h3 className="font-bold text-base lap:text-xl">Total Rental Price</h3>
-                <p className="hidden lap:block font-medium text-xs lap:text-sm text-[#90A3BF]">Overall price and includes rental discount</p>
-                <p className="lap:hidden font-medium text-xs lap:text-sm text-[#90A3BF]">Overall price rental</p>
+            <div className="bg-[#F6F7F9] rounded-lg flex lap:px-8 lap:py-3">
+              <Input
+                placeholder="Apply promo code"
+                className="border-none shadow-none font-medium text-xs lap:text-sm focus-visible:ring-0"
+              />
+              <Button
+                variant={"ghost"}
+                className="font-semibold text-xs lap:text-base"
+              >
+                Apply Now
+              </Button>
             </div>
-            <p className="font-bold text-xl lap:text-[32px]">$80.00</p>
-        </div>
-      </div>
+            <div className="flex items-center justify-between">
+              <div className="space-y-1">
+                <h3 className="font-bold text-base lap:text-xl">
+                  Total Rental Price
+                </h3>
+                <p className="hidden lap:block font-medium text-xs lap:text-sm text-[#90A3BF]">
+                  Overall price and includes rental discount
+                </p>
+                <p className="lap:hidden font-medium text-xs lap:text-sm text-[#90A3BF]">
+                  Overall price rental
+                </p>
+              </div>
+              <p className="font-bold text-xl lap:text-[32px]">
+              {item.pricePerDay.includes("/day")
+                    ? item.pricePerDay.replace("/day", "")
+                    : item.pricePerDay}
+              </p>
+            </div>
+          </div>
+        );
+      })}
     </main>
   );
 };
