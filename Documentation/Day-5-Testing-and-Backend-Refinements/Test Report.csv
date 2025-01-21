@@ -1,0 +1,5 @@
+Test case ID,Test Case Description,Test Steps,Expected Result,Actual Result,Status,Severity Level,Remarks
+TC001,Validate car listing page,Open car page> Verify cars,Cars should display successfully,Cars shown correctly,Passed,Medium,Working
+TC002,Test API error handling,Disconnect API> Refresh page,Show fallback UI with error message,Fallback UI shown,Passed,Medium,Handled gracefully
+TC003,Ensure responsiveness on mobile,Resize browser window> Check layout,Layout updates properly to screen size,Responsived,Passed,Low,Responsived
+TC004,Dynamic page rendering,Click on Rent Now button> Navigate,Should navigate to a dynamic page,Navigating to a dynamic page,Passed,Low,Done properly
