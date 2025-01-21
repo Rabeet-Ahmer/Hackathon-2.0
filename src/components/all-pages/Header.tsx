@@ -16,7 +16,7 @@ const Header = () => {
         <div className="flex border border-gray-300 rounded-lg md:rounded-full md:w-auto lap:w-[492px] md:ml-16 py-1">
           <Button variant={"ghost"} className="rounded-full">
             <Image
-              src={"icons/search.svg"}
+              src={"/icons/search.svg"}
               alt="search icon"
               width={24}
               height={24}
@@ -28,7 +28,7 @@ const Header = () => {
           />
           <Button variant={"ghost"} className="rounded-full">
             <Image
-              src={"icons/settings.svg"}
+              src={"/icons/settings.svg"}
               alt="settings icon"
               width={24}
               height={24}
@@ -40,7 +40,7 @@ const Header = () => {
         <div className="flex items-center ml-auto lap:ml-[408px] md:gap-5">
           <Button variant={"ghost"} className="border rounded-full w-11 h-11 hidden md:flex">
             <Image
-              src={"icons/heart.svg"}
+              src={"/icons/heart.svg"}
               alt="icon"
               width={24}
               height={24}
@@ -49,7 +49,7 @@ const Header = () => {
           </Button>
           <Button variant={"ghost"} className="border rounded-full w-11 h-11 hidden md:flex relative">
             <Image
-              src={"icons/bell.svg"}
+              src={"/icons/bell.svg"}
               alt="icon"
               width={24}
               height={24}
@@ -59,7 +59,7 @@ const Header = () => {
           </Button>
           <Button variant={"ghost"} className="border rounded-full w-11 h-11 hidden md:flex">
             <Image
-              src={"icons/settings2.svg"}
+              src={"/icons/settings2.svg"}
               alt="icon"
               width={24}
               height={24}
@@ -68,7 +68,7 @@ const Header = () => {
           </Button>
           <Button variant={"ghost"} className="p-0 absolute right-0 top-[44px] md:relative md:top-0 md:right-0">
             <Image
-              src={"icons/img.svg"}
+              src={"/icons/img.svg"}
               alt="icon"
               width={44}
               height={44}

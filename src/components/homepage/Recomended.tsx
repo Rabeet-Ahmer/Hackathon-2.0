@@ -62,7 +62,7 @@ const Recomended = async ({hidden, scroll}:IHero) => {
         </div>
 
         {/* Copy of above, displays if scroll is true */}
-        <div className={`${scroll ? "grid overflow-x-auto gap-8 w-full sm:grid-cols-2 lap:flex" :"hidden" }`}>
+        <div className={`${scroll ? "grid lap:overflow-x-auto gap-8 w-full sm:grid-cols-2 lg:grid-cols-3 lap:flex" :"hidden" }`}>
           {car.map((car) => {
             return <Card key={car._id} item={car} height={true}/>;
           })}

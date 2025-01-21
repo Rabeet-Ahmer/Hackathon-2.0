@@ -68,7 +68,7 @@ const Popular = async ({hidden, scroll}:IHero) => {
         </div>
 
         {/* Copy of above, displays if scroll is true */}
-         <div className={`${scroll ? "grid sm:grid-cols-2 lap:flex overflow-x-auto gap-8 w-full" :"hidden" }`}>
+         <div className={`${scroll ? "grid sm:grid-cols-2 lg:grid-cols-3 lap:flex overflow-x-auto gap-8 w-full" :"hidden" }`}>
         {
             car.map((car)=>{
                 return(

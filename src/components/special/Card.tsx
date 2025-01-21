@@ -14,11 +14,11 @@ interface ICard {
   image_url: string;
 }
 
-const Card: FC<{ item: ICard; height?: boolean }> = ({ item, height }) => {
+const Card: FC<{ item: ICard, height?: boolean }> = ({ item, height }) => {
   return (
     // Main Card
     <div
-      className={`font-jakarta w-[261px] sm:w-auto justify-self-center ${height && "sm:h-[417px]"} space-y-16 p-6 rounded-lg bg-white md:flex md:flex-col md:justify-center md:items-center`}
+      className={`font-jakarta w-[261px] sm:w-[300px] justify-self-center ${height && "sm:h-[417px]"} space-y-16 p-6 rounded-lg bg-white md:flex md:flex-col md:justify-center md:items-center`}
     >
       {/* Card top */}
       <div className="flex items-start justify-between gap-14">
@@ -26,12 +26,12 @@ const Card: FC<{ item: ICard; height?: boolean }> = ({ item, height }) => {
           <h4 className="font-bold text-xl">{item.name}</h4>
           <p className="font-bold text-[#90A3BF]">{item.type}</p>
         </div>
-        <Image src={"icons/heart2.svg"} alt="icon" width={24} height={24} />
+        <Image src={"/icons/heart2.svg"} alt="icon" width={24} height={24} />
       </div>
 
       {/* Car image */}
       <div>
-        <Image src={item.image_url || "cars/ad1.svg"} alt="car" width={232} height={72} />
+        <Image src={item.image_url} alt="car" width={232} height={72} />
       </div>
 
       {/* Car features / Pricing */}
@@ -39,20 +39,20 @@ const Card: FC<{ item: ICard; height?: boolean }> = ({ item, height }) => {
         {/* Features */}
         <div className="flex gap-4">
           <div className="flex items-center gap-[6px]">
-            <Image src={"icons/fuel.svg"} alt="icon" width={24} height={24} />
+            <Image src={"/icons/fuel.svg"} alt="icon" width={24} height={24} />
             <p className="font-medium text-sm text-[#90A3BF]">
               {item.fuelCapacity}
             </p>
           </div>
           <div className="flex items-center gap-[6px]">
-            <Image src={"icons/steer.svg"} alt="icon" width={24} height={24} />
+            <Image src={"/icons/steer.svg"} alt="icon" width={24} height={24} />
             <p className="font-medium text-sm text-[#90A3BF]">
               {item.transmission}
             </p>
           </div>
           <div className="flex items-center gap-[6px]">
             <Image
-              src={"icons/capacity.svg"}
+              src={"/icons/capacity.svg"}
               alt="icon"
               width={24}
               height={24}
