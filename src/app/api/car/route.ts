@@ -5,6 +5,6 @@ export const GET = async () => {
       const data = await fetch("https://sanity-nextjs-application.vercel.app/api/hackathon/template7");
       return NextResponse.json(data, { status: data.status });
     } catch (error) {
-      return NextResponse.json({ error: "Error in GET request." },{ status: 500 });
+      return NextResponse.json({ message: `Error in GET request. ${error}` },{ status: 500 });
     }
   }
