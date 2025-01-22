@@ -8,19 +8,8 @@ import Popular from "@/components/homepage/Popular";
 import Recomended from "@/components/homepage/Recomended";
 import { client } from "@/sanity/lib/client";
 
-interface Car {
-  _id: string;
-  name: string;
-  type: string;
-  tags: string[];
-  seatingCapacity: string;
-  transmission: string;
-  fuelCapacity: string;
-  pricePerDay: string;
-  image_url: string;
-}
 
-const fetchData = async (id: string): Promise<Car[] | null> => {
+const fetchData = async ( id: string ) => {
   try {
     const data = await client.fetch(`*[_type=="car" && _id == $id]{
     _id,
@@ -41,7 +30,7 @@ const fetchData = async (id: string): Promise<Car[] | null> => {
 };
 
 interface Props {
-  params: { id: string }; 
+  params: Promise<{ id: string }>; 
 }
 
 const CarDetail = async ({ params }: Props) => {
@@ -66,6 +55,18 @@ const CarDetail = async ({ params }: Props) => {
     { text: "6 Person", num: 12 },
     { text: "8 Person", num: 16 },
   ];
+
+  interface ICars {
+    _id: string,
+    name: string,
+    type: string,
+    tags: string[],
+    seatingCapacity: string,
+    transmission: string,
+    fuelCapacity: string,
+    pricePerDay: string,
+    image_url: string
+  }
 
   return (
     <div className="lap:grid grid-cols-4">
@@ -119,7 +120,7 @@ const CarDetail = async ({ params }: Props) => {
 
       {/* Right side */}
       <div className="lap:col-span-3 flex flex-col lg:gap-8">
-        {car.map((item) => {
+        {car.map((item: ICars) => {
           return(
         <div key={item._id} className="flex flex-col items-center md:flex-row md:justify-center gap-8 p-8">
           <div className="font-jakarta space-y-6 flex flex-col items-center">

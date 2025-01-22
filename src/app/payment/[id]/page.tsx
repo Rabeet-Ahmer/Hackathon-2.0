@@ -9,19 +9,8 @@ import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import React from "react";
 
-interface Car {
-  _id: string;
-  name: string;
-  type: string;
-  tags: string[];
-  seatingCapacity: string;
-  transmission: string;
-  fuelCapacity: string;
-  pricePerDay: string;
-  image_url: string;
-}
 
-const fetchData = async (id: string): Promise<Car[] | null> => {
+const fetchData = async ( id: string ) => {
   try {
     const data = await client.fetch(
       `*[_type=="car" && _id == $id]{
@@ -43,8 +32,8 @@ const fetchData = async (id: string): Promise<Car[] | null> => {
   }
 };
 
-interface Props {
-  params: { id: string };
+type Props = {
+  params: Promise<{ id: string }>; 
 }
 
 const page = async ({ params }: Props) => {
@@ -85,6 +74,18 @@ const page = async ({ params }: Props) => {
     item3: "Night",
     pay: true,
   };
+
+  interface ICars {
+    _id: string,
+    name: string,
+    type: string,
+    tags: string[],
+    seatingCapacity: string,
+    transmission: string,
+    fuelCapacity: string,
+    pricePerDay: string,
+    image_url: string
+  }
 
   return (
     // Main div
@@ -323,7 +324,7 @@ const page = async ({ params }: Props) => {
       </div>
 
       {/* Right side | Detail Card */}
-      {car.map((item) => {
+      {car.map((item: ICars) => {
         return (
           <div
             key={item._id}
