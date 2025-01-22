@@ -7,16 +7,12 @@ MORENT is a web-based application that allows users to rent cars from various lo
 - **User-Friendly Interface**: Intuitive design for seamless navigation and car booking.
 - **Robust Search Options**: Users can search for car listings in their area that are available for rent.
 - **Detailed Vehicle Information**: Access comprehensive details about each vehicle, including specifications and availability.
-- **Secure Payment Processing**: Checkout using Stripe for safe and reliable transactions.
 
 ## Technologies Used
 
-- **Frontend**: Built with React.js for dynamic and responsive user interfaces.
-- **Backend**: Powered by Node.js and Express.js for efficient server-side operations.
-- **Database**: Utilizes MongoDB for flexible and scalable data management.
-- **Styling**: Styled-components for modular and maintainable CSS.
-- **Authentication**: Implemented with Passport.js for secure user authentication.
-- **Payments**: Integrated with Stripe for seamless payment processing.
+- **Frontend**: Built with Next.js for dynamic and responsive user interfaces.
+- **Backend**: Powered by Sanity CMS for efficient server-side operations.
+- **Styling**: Used Tailwind CSS and Shadcn UI for UI components and styling.
 
 ## Getting Started
 
