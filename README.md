@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MORENT: Modern Car Rental Application
+
+MORENT is a web-based application that allows users to rent cars from various locations worldwide. Users can search for cars based on their desired location and rental dates, view available options, and book their rental directly through the application.
+
+## Features
+
+- **User-Friendly Interface**: Intuitive design for seamless navigation and car booking.
+- **Robust Search Options**: Users can search for car listings in their area that are available for rent.
+- **Detailed Vehicle Information**: Access comprehensive details about each vehicle, including specifications and availability.
+- **Secure Payment Processing**: Checkout using Stripe for safe and reliable transactions.
+
+## Technologies Used
+
+- **Frontend**: Built with React.js for dynamic and responsive user interfaces.
+- **Backend**: Powered by Node.js and Express.js for efficient server-side operations.
+- **Database**: Utilizes MongoDB for flexible and scalable data management.
+- **Styling**: Styled-components for modular and maintainable CSS.
+- **Authentication**: Implemented with Passport.js for secure user authentication.
+- **Payments**: Integrated with Stripe for seamless payment processing.
 
 ## Getting Started
 
-First, run the development server:
+To run the project locally:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Clone the repository**:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   git clone https://github.com/Rabeet-Ahmer/MORENT.git
